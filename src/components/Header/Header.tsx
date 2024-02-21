@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Button, Grid } from "@mui/material";
 import React from "react";
 import PersonIcon from "@mui/icons-material/Person";
 import { useGetCurrentUserQuery } from "src/graphql/generated";
@@ -29,9 +29,7 @@ const Header = () => {
           startIcon={<PersonIcon sx={{ color: "white" }} />}
           sx={{ marginRight: "20px" }}
         >
-          <span style={{ color: "white", margin: 0 }}>
-            {data?.getCurrentUser?.firstName}
-          </span>
+          {data?.getCurrentUser?.firstName}
         </Button>
       </Grid>
     </Box>

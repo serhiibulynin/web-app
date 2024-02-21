@@ -1,3 +1,4 @@
+/* eslint-disable react/no-array-index-key */
 import { Box, Container, Grid, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
@@ -36,7 +37,7 @@ const Mainpage = () => {
   const [modalOpen, setModalOpen] = useState(false);
 
   return (
-    <div>
+    <>
       <Typography
         variant="subtitle1"
         sx={{
@@ -95,7 +96,7 @@ const Mainpage = () => {
           )}
         </Box>
       </Container>
-    </div>
+    </>
   );
 };
 
