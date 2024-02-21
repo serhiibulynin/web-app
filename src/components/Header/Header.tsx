@@ -23,13 +23,6 @@ const Header = () => {
       }}
     >
       <Drawer />
-      <Typography
-        variant="subtitle1"
-        sx={{ fontWeight: "bold", fontSize: "25px", marginLeft: "20px" }}
-      >
-        <span style={{ color: "white" }}>Hatex</span>
-        <span style={{ color: "orange", margin: 0 }}>Bau</span>
-      </Typography>
       <Grid>
         <Button
           variant="text"
