@@ -17,21 +17,20 @@ LABEL stage="${IMAGE_LABEL}-builder"
 ENV NODE_ENV=production
 
 WORKDIR /app
-COPY --from=dependencies /app/node_modules ./node_modules
-
 COPY ./ ./
+COPY --from=dependencies /app/node_modules ./node_modules
 RUN npm run build
 
-# Этап 3: Финальный этап
-FROM node:18.15.0-alpine3.17
-
+FROM nginx:1.21.0-alpine
 ARG IMAGE_LABEL
 ARG BUILD_VERSION
 
-WORKDIR /app
-
-COPY --from=builder /app/build ./
-COPY --from=builder /app/.env ./app
-
 LABEL image-label=$IMAGE_LABEL
 LABEL image-version=$BUILD_VERSION
+
+# Copy the ngnix.conf to the container
+WORKDIR /usr/share/nginx/html
+EXPOSE 80
+
+COPY --from=builder /app/build .
+ENTRYPOINT ["nginx", "-g", "daemon off;"]
